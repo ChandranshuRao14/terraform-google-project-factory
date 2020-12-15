@@ -35,32 +35,8 @@ Previously, the [Project Factory module](../README.md) had an input `var.shared_
  }
 ```
 
-### Shared VPC Service Project module
-The [`svpc_service_project`](../modules/svpc_service_project) submodule performs the same functions as the root module with the addition of assigning the project as a Shared VPC service project. Note that this submodule was previously an internal submodule named `shared_vpc` and has been externalized and renamed in the v10.0 release of Project Factory.
-
-```diff
- module "service-project" {
--  source  = "terraform-google-modules/project-factory/google//modules/shared_vpc"
-+  source  = "terraform-google-modules/project-factory/google//modules/svpc_service_project"
--  version = "~> 9.2"
-+  version = "~> 10.0"
-
-   name                = "pf-test-1"
-   random_project_id   = "true"
-   org_id              = "1234567890"
-   usage_bucket_name   = "pf-test-1-usage-report-bucket"
-   usage_bucket_prefix = "pf/test/1/integration"
-   billing_account     = "ABCDEF-ABCDEF-ABCDEF"
-   shared_vpc          = module.host-project.project_id
-
-   activate_apis = [
-     "compute.googleapis.com",
-     "container.googleapis.com",
-     "dataproc.googleapis.com",
-     "dataflow.googleapis.com",
-   ]
- }
-```
+### Shared VPC Service Project submodule
+The [`svpc_service_project`](../modules/svpc_service_project) submodule performs the same functions as the root module with the addition of assigning the project as a Shared VPC service project. Note that this submodule was previously an internal submodule named `shared_vpc` and has been externalized and renamed in the v10.0 release of Project Factory. See the [submodule documentation](../modules/svpc_service_project) for usage information and [../examples/shared_vpc](../examples/shared_vpc) for a full example.
 
 ## Upgrade provider version
 
